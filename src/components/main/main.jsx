@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const MainComponent = (props) => {
-  const {title, genre, year} = props;
+const MainComponent = ({title, genre, year}) => {
 
   return (
     <React.Fragment>
