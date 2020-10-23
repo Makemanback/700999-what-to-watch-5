@@ -1,17 +1,16 @@
 import React, {PureComponent} from "react";
-import {Link} from 'react-router-dom';
 import Footer from '../footer/footer';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
-class Film extends PureComponent {
+class FilmReviews extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   render() {
 
-    const {image, title, genre, released, rating, description, director, starring} = this.props.films[0];
-    const {score, level, count} = rating;
+    const {image, title, genre, released, reviews} = this.props.films[0];
 
     return (
       <React.Fragment>
@@ -34,7 +33,7 @@ class Film extends PureComponent {
 
               <div className="user-block">
                 <div className="user-block__avatar">
-                  <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
                 </div>
               </div>
             </header>
@@ -50,13 +49,13 @@ class Film extends PureComponent {
                 <div className="movie-card__buttons">
                   <button className="btn btn--play movie-card__button" type="button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s"/>
+                      <use xlinkHref="#play-s" />
                     </svg>
                     <span>Play</span>
                   </button>
                   <button className="btn btn--list movie-card__button" type="button">
                     <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"/>
+                      <use xlinkHref="#add" />
                     </svg>
                     <span>My list</span>
                   </button>
@@ -69,43 +68,51 @@ class Film extends PureComponent {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src={image} alt={title} width="218" height="327" />
+                <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
                 <nav className="movie-nav movie-card__nav">
                   <ul className="movie-nav__list">
+                    <li className="movie-nav__item">
+                      <Link to="/films/22" className="movie-nav__link">Overview</Link>
+                    </li>
+                    <li className="movie-nav__item">
+                      <Link to="details" className="movie-nav__link">
+                      Details
+                      </Link>
+                    </li>
                     <li className="movie-nav__item movie-nav__item--active">
-                      <a href="#" className="movie-nav__link">Overview</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <Link to="22/details" className="movie-nav__link">Details</Link>
-                    </li>
-                    <li className="movie-nav__item">
-                      <Link to="22/reviews" className="movie-nav__link">Reviews</Link>
+                      <a href="#" className="movie-nav__link">Reviews</a>
                     </li>
                   </ul>
                 </nav>
 
-                <div className="movie-rating">
-                  <div className="movie-rating__score">{score}</div>
-                  <p className="movie-rating__meta">
-                    <span className="movie-rating__level">{level}</span>
-                    <span className="movie-rating__count">{count} ratings</span>
-                  </p>
-                </div>
+                <div className="movie-card__reviews movie-card__row">
+                  <div className="movie-card__reviews-col">
+                    {reviews.map(({description, author, rating, date}, i) => (
+                      <div className="review" key={i + Math.random()}>
+                        <blockquote className="review__quote">
+                          <p className="review__text">{description}</p>
 
-                <div className="movie-card__text">
-                  {description}
+                          <footer className="review__details">
+                            <cite className="review__author">{author}</cite>
+                            <time className="review__date" dateTime={date}>{date}</time>
+                            {/* не разобрался как перевести дату в dateTime в нужный формат */}
+                          </footer>
+                        </blockquote>
 
-                  <p className="movie-card__director"><strong>Director: {director}</strong></p>
+                        <div className="review__rating">{rating}</div>
+                      </div>
 
-                  <p className="movie-card__starring"><strong>Starring: {starring} and other</strong></p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
         <div className="page-content">
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
@@ -156,19 +163,8 @@ class Film extends PureComponent {
   }
 }
 
-Film.propTypes = {
+FilmReviews.propTypes = {
   films: PropTypes.array,
-  image: PropTypes.string,
-  title: PropTypes.string,
-  genre: PropTypes.string,
-  released: PropTypes.number,
-  rating: PropTypes.shape({
-    score: PropTypes.number,
-    level: PropTypes.string,
-    count: PropTypes.number,
-  }),
-  description: PropTypes.string,
-  director: PropTypes.string,
-  starring: PropTypes.array
 };
-export default Film;
+
+export default FilmReviews;
