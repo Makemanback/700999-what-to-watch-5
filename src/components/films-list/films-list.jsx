@@ -1,31 +1,20 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from '../small-movie-card/small-movie-card';
 
-class FilmsList extends PureComponent {
-  constructor(props) {
-    super(props);
+const FilmsList = ({films}) => {
+  return (
+    films.map(({title, image, id}) => {
+      return (
+        <SmallMovieCard title={title} image={image} key={id}/>
+      );
+    })
+  );
+};
 
-    this.state = {
-      currentFilm: ``
-    };
-  }
-
-  render() {
-    const films = this.props.films;
-
-    return (
-      films.map(({title, image}, i) => {
-        return (
-          <SmallMovieCard title={title} image={image} key={`${i}-${image.src}`}/>
-        );
-      })
-    );
-  }
-}
 
 FilmsList.propTypes = {
-  films: PropTypes.array.isRequired
+  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
 export default FilmsList;

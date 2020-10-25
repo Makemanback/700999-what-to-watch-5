@@ -10,14 +10,15 @@ import MyList from '../my-list/my-list';
 import Player from '../player/player';
 import SignIn from '../sign-in/sign-in';
 
-const App = ({title, genre, year, films}) => {
+
+const App = ({name, genre: movieGenre, year, films}) => {
 
   return (
 
     <BrowserRouter>
       <Switch>
         <Route exact path='/'>
-          <Main title={title} genre={genre} year={year} films={films}/>
+          <Main name={name} movieGenre={movieGenre} year={year} films={films}/>
         </Route>
         <Route exact path='/login'>
           <SignIn />
@@ -25,17 +26,27 @@ const App = ({title, genre, year, films}) => {
         <Route exact path='/mylist'>
           <MyList />
         </Route>
-        <Route exact path='/films/:id'>
-          <Film films={films}/>
+        <Route exact path='/films/:id' render={() => {
+          const {image, title, genre, released, rating, description, director, starring} = films[0];
+          return <Film image={image} title={title} genre={genre} released={released} director={director} rating={rating} starring={starring} description={description} />;
+        }}>
         </Route>
-        <Route exact path='/films/:id/details'>
-          <FilmDetails films={films} />
+        <Route exact path='/films/:id/details' render={() => {
+          const {image, title, genre, released, director, starring, runTime} = films[0];
+          return <FilmDetails image={image} title={title} genre={genre} released={released} director={director} starring={starring} runTime={runTime} />;
+        }}>
         </Route>
-        <Route exact path='/films/:id/reviews'>
-          <FilmReviews films={films} />
+        <Route exact path='/films/:id/reviews' render={() => {
+          const {image, title, genre, released, reviews} = films[0];
+          return <FilmReviews image={image} title={title} genre={genre} released={released} reviews={reviews} />;
+        }}>
+
         </Route>
-        <Route exact path='/films/:id/review'>
-          <AddReview films={films} />
+        <Route exact path='/films/:id/review' render={() => {
+
+          const {title, image} = films[0];
+          return <AddReview title={title} image={image}/>;
+        }}>
         </Route>
         <Route exact path='/player/:id'>
           <Player />
@@ -46,7 +57,7 @@ const App = ({title, genre, year, films}) => {
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   films: PropTypes.array.isRequired,

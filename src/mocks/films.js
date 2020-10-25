@@ -1,5 +1,11 @@
+import {nanoid} from "nanoid";
+
+const time = 1000000;
+const getRandomDate = () => new Date(Date.now() - Math.round(Math.random() * time));
+
 export default [
   {
+    id: 0,
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Knocking on heavens door`,
@@ -19,23 +25,28 @@ export default [
         description: `The React context API is one of the major forces behind the most useful packages in the React ecosystem. It’s used everywhere from theming, to navigation, to graphql tooling. And being as important as it is, you may have heard that the context API recently received a major update.`,
         author: `Kate Moss`,
         rating: `2,3`,
-        date: `November 1, 2020`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `Starting with React 16.3, the context API involves the use of two special components: <Provider> and <Consumer>. And if one of these names sounds familiar, it’s because Redux also supplies a <Provider> component. In fact, the Redux and React providers both do roughly the same thing. So in a way, context can replace Redux`,
         author: `Sam Samson`,
         rating: `7,3`,
-        date: `December 2, 2018`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `But wait a moment. Redux’s <Provider> component has actually made use of context since 2015, when Redux was first released. And this raises the question: if Redux has been using context all along, how can context replace Redux? The rumors of Redux’s demise have been greatly exaggerated`,
         author: `Steve Watt`,
         rating: `6,2`,
-        date: `June 20, 2016`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
+
   {
+    id: 1,
     image: `img/bohemian-rhapsody.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Forrest Gump`,
@@ -55,24 +66,29 @@ export default [
         description: `Of all of Redux’s features, its connect() function is arguably the most frequently used. Along with the <Provider> component, connect() lets you pass global state to any component in your application, without manually passing that data via props`,
         author: `John Jonov`,
         rating: `9,9`,
-        date: `July 15, 2018`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `Of course, Redux isn’t the only way to provide data to your components. React’s context API does basically the same thing; it lets you pass global state down the component tree without passing it through props at every level. But that’s all it does.
         In contrast, Redux provides a whole toolkit for managing state:`,
         author: `Kyle Kylovich`,
         rating: `8,8`,
-        date: `August 22, 2015`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `As you can see, context is not a replacement for Redux. Context won’t give you time traveling debugging, configurable middleware, or anything more than a way to get data from one place to another. If you want a tool to help you manage your state, then Redux is a great choice.`,
         author: `Sweet Girl`,
         rating: `4,1`,
-        date: `January 22, 2014`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
+
   {
+    id: 2,
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Titanic`,
@@ -96,23 +112,21 @@ export default [
         Up until React’s new context API was released, it wouldn’t have been all that controversial to say “just use Redux.” But a small change to how context works has reignited the debate.`,
         author: `Cocaine Lsd`,
         rating: `6,0`,
-        date: `February 22, 2019`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `Changes this big are guaranteed to cause some excitement. But while they certainly made a splash, they didn’t fundamentally change what context does. The new API, like the old API, just gives you a way to provide data to a component’s descendants. However, amongst the API differences, there was a smaller, less obvious change: the new context API always propagates updates, even past shouldComponentUpdate() or PureComponent.`,
         author: `Joe Cowboy`,
         rating: `7,2`,
-        date: `March 13, 2018`
-      },
-      {
-        description: `When a React is rendered, just as the props of its child components will be updated, so will the context available to its descendants. Context, like props, is just something that you can renderwith one exception. With old context API, React decided whether to rerender a child solely based on the component’s props and state. It didn’t take changes in context into account. This meant that if a component extended or implemented, the context in the component and its children would sometimes get out of date.`,
-        author: `Nikson Bush`,
-        rating: `9,9`,
-        date: `October 17, 2012`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
+
   {
+    id: 3,
     image: `img/bohemian-rhapsody.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Green mile`,
@@ -134,23 +148,28 @@ export default [
         What happens if you change the AppLayout component to extend React.PureComponent instead of React.Component? Go ahead and try changing it. Once you’ve made the change, click a few links and see what happens.`,
         author: `Barak Obama`,
         rating: `10`,
-        date: `June 12, 2018`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `Whenever you click a <Link> component in the above example, the navigate() method of the app’s <NavigationProvider> component will be called. This causes the <NavigationProvider> component’s state to update, which in turn causes it to re-render.`,
         author: `Donald Trump`,
         rating: `1,9`,
-        date: `August 8, 2010`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `By default, re-rendering a React component will cause its children to re-render, which will cause the children of those children to re-render, and so on. This means that clicking a link will re-render the entire app, with the <Link> and <Route> components picking up the new context in the process.`,
         author: `George Washington`,
         rating: `8,2`,
-        date: `July 2, 2015`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
+
   {
+    id: 4,
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Scent of woman`,
@@ -170,23 +189,28 @@ export default [
         description: `However, components that extends PureComponent are special; they only re-render if their state or props have changed from the previous render. The AppLayout component in the above example has neither props nor state, so switching it to PureComponent means that it will never rerendereven if the context changes!`,
         author: `Vlad Putin`,
         rating: `2,8`,
-        date: `February 1, 2008`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `Before React introduced its new context API, you had to make a choice: do you want to be able to tune your app’s performance with PureComponent and shouldComponentUpdate(), or do you want the convenience of being able to provide global state via context? You couldn’t have both. And given the constraints, the choice was clear: performance won hands down.`,
         author: `Dmitry Medvedev`,
         rating: `5,5`,
-        date: `December 7, 2019`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `The thing is, most real world apps do actually need a little performance tuning. But the old context API not only made it impossible to reliably use PureComponent and shouldComponentUpdate(), it also exacerbated the problem by requiring that the entire app be re-rendered each time that any global state changed!`,
         author: `Tim Cook`,
         rating: `6,2`,
-        date: `October 17, 2018`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
+
   {
+    id: 5,
     image: `img/bohemian-rhapsody.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Trip to America`,
@@ -209,7 +233,8 @@ export default [
         In contrast with React’s old context API, the new API just works. The new <Context.Consumer> component will always re-render after its corresponding <Context.Provider> element’s value prop has been updateeven if there is a PureComponent or shouldComponentUpdate() in the way.`,
         author: `Sam Jones`,
         rating: `8,8`,
-        date: `April 14, 2015`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `The above example contains the least moving part of all three of my router implementationsand it’s all thanks to the new context API.
@@ -217,18 +242,22 @@ export default [
         Of course, context doesn’t give you any conventions for structuring your state and actions. It doesn’t give you Redux’s wonderful dev tools. And while it does make performance optimization possible, it certainly doesn’t do any of that optimization for you.`,
         author: `Emmanuel Kign`,
         rating: `2,9`,
-        date: `August 17, 2015`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `In fact, if you’re using context, you’ll want to keep an eye on performancewithout being careful, you can easily re-render the entire app on each update. To learn more, read my guide to context and performance.
         By the way, if you haven’t already, you can keep up to date with other new Frontend Armory content by getting a free membershipit will also give you access to all of our printable cheatsheets! And as always, if you have any questions, comments or feedback, let me know by tweeting at @james_k_nelson, or emailing me at james@frontarm.com. I can’t wait to hear from you, and thanks so much for reading!`,
         author: `Queen Eng`,
         rating: `8,2`,
-        date: `May 22, 2014`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
+
   {
+    id: 6,
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Saw`,
@@ -248,25 +277,30 @@ export default [
         description: `Flux is a new kind of architecture that Facebook uses when it works with React. React - a popular front-end technology like AngularJS - is a Javascript framework, but it only works with the View layer, which means you have only the V in the MVC - Model-View-Controller - architecture. React gives you the template language and a few function hooks to render HTML. Since it is component based, you can compose an application with React, and just specify how you want your component to look. React will keep it updated; even the underlying data changes. The core principles of React are (1) Flexibility, (2) Efficiency and (3) Declarative code. As React is flexible, you can use it in several projects, create new apps, and even use it within the existing code base, without doing a rewrite.`,
         author: `Pavel Durov`,
         rating: `2,9`,
-        date: `October 12, 2020`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `What Is Flux?
         We learned that React takes care of the V, or View, part of the MVC. Now, what about the M, or the Model, part? Flux, a programming pattern, takes care of that. It is the architecture responsible for creating data layers in JavaScript applications and building client-side web applications. Flux complements React’s Composable view components through its unidirectional data flow. You can also say that Flux is more of a pattern than a framework and it has four main components (we will go in depth later)`,
         author: `Mark Markov`,
         rating: `8,9`,
-        date: `September 8, 2019`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `This is not like the general MVC that you see in other frameworks. But yes, there are Controllers, but they are mostly Controller views. Views are at the top of the hierarchy and they retire the data and functionality and pass them down to their children.
         Flux follows the concept of unidirectional data flow making it much easier to zero in on where the error lies. The data goes through a strict pipeline through your application. React and Flux are actually two of the most popular frameworks that follow the concept of unidirectional data flow.`,
         author: `Stephen King`,
         rating: `10`,
-        date: `March 16, 2020`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
+
   {
+    id: 7,
     image: `img/bohemian-rhapsody.jpg`,
     video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     title: `Avatar`,
@@ -289,7 +323,8 @@ export default [
         Flux is open source and more of a design pattern than a formal framework and you can use it immediately. What keeps it apart from other frameworks is that it is different from the MVC Design pattern.`,
         author: `Keanu Reeves`,
         rating: `9,2`,
-        date: `February 22, 2013`
+        date: getRandomDate(),
+        id: nanoid()
       },
       {
         description: `Flux keeps code predictable when compared to other MVC frameworks. Developers can build applications without being bothered about complicated interactions between data resources.
@@ -297,14 +332,8 @@ export default [
         Flux vs. MVC`,
         author: `Brad Beed`,
         rating: `6,0`,
-        date: `March 1, 2008`
-      },
-      {
-        description: `The main problem with MVC is that it doesn’t scale well for Facebook’s huge code base. Flux proved to be a better choice because it is all about tweaking the flow of the app.
-        MVC has stood the test of time, and ever since its launch in 1976, it has been the favorite for many developers. But MVC couldn’t handle the code base that Facebook needed, and, hence, Flux started ruling the roost. Let’s take a look at the main factors that give Flux the upper hand over the VC design pattern.`,
-        author: `Amy Wibne`,
-        rating: `8,1`,
-        date: `November 19, 2017`
+        date: getRandomDate(),
+        id: nanoid()
       },
     ]
   },
