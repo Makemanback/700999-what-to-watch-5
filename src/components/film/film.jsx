@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom';
 import Footer from '../footer/footer';
 import PropTypes from 'prop-types';
 
-const Film = ({image, title, genre, released, rating, description, director, starring}) => {
+const Film = ({film}) => {
+
+  const {image, title, genre, released, rating, description, director, starring} = film;
   const {score, level, count} = rating;
 
   return (
@@ -150,17 +152,19 @@ const Film = ({image, title, genre, released, rating, description, director, sta
 
 
 Film.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  released: PropTypes.number.isRequired,
-  rating: PropTypes.shape({
-    score: PropTypes.number.isRequired,
-    level: PropTypes.string.isRequired,
-    count: PropTypes.number.isRequired,
-  }).isRequired,
-  description: PropTypes.string.isRequired,
-  director: PropTypes.string.isRequired,
-  starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  film: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    rating: PropTypes.shape({
+      score: PropTypes.number.isRequired,
+      level: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  }).isRequired
 };
 export default Film;

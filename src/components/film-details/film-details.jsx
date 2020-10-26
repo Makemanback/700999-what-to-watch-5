@@ -3,7 +3,9 @@ import Footer from '../footer/footer';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-const FilmDetails = ({image, title, genre, released, director, starring, runTime}) => {
+const FilmDetails = ({film}) => {
+  const {image, title, genre, released, director, starring, runTime} = film
+
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -165,13 +167,15 @@ const FilmDetails = ({image, title, genre, released, director, starring, runTime
   );
 };
 FilmDetails.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  released: PropTypes.number.isRequired,
-  director: PropTypes.string.isRequired,
-  starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  runTime: PropTypes.string.isRequired,
+  film: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    runTime: PropTypes.string.isRequired,
+  }).isRequired
 };
 
 export default FilmDetails;

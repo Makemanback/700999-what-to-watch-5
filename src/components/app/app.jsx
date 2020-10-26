@@ -27,13 +27,13 @@ const App = ({name, genre: movieGenre, year, films}) => {
           <MyList />
         </Route>
         <Route exact path='/films/:id' render={() => {
-          const {image, title, genre, released, rating, description, director, starring} = films[0];
-          return <Film image={image} title={title} genre={genre} released={released} director={director} rating={rating} starring={starring} description={description} />;
+          const film = films[0];
+          return <Film film={film} />;
         }}>
         </Route>
         <Route exact path='/films/:id/details' render={() => {
-          const {image, title, genre, released, director, starring, runTime} = films[0];
-          return <FilmDetails image={image} title={title} genre={genre} released={released} director={director} starring={starring} runTime={runTime} />;
+          const film = films[0];
+          return <FilmDetails film={film} />;
         }}>
         </Route>
         <Route exact path='/films/:id/reviews' render={() => {

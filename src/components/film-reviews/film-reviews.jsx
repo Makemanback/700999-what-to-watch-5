@@ -3,6 +3,7 @@ import Footer from '../footer/footer';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import moment from 'moment';
+import Review from '../review/review';
 
 const FilmReviews = ({image, title, genre, released, reviews}) => {
   const startReviews = reviews.slice(0, Math.round((reviews.length / 2)));
@@ -87,53 +88,18 @@ const FilmReviews = ({image, title, genre, released, reviews}) => {
               <div className="movie-card__reviews movie-card__row">
                 {reviews.length === 1 ? <div className="movie-card__reviews-col">
                   {reviews.map(({description, author, rating, date, id}) => (
-                    <div className="review" key={id}>
-                      <blockquote className="review__quote">
-                        <p className="review__text">{description}</p>
-
-                        <footer className="review__details">
-                          <cite className="review__author">{author}</cite>
-                          <time className="review__date" dateTime={moment(date).format()}>{moment(date).format(`MMMM Do YYYY`)}</time>
-                        </footer>
-                      </blockquote>
-
-                      <div className="review__rating">{rating}</div>
-                    </div>
-
+                    <Review author={author} rating={rating} date={date} id={id} description={description} key={id} />
                   ))}
                 </div> :
                   <Fragment>
                     <div className="movie-card__reviews-col">
                       {startReviews.map(({description, author, rating, date, id}) => (
-                        <div className="review" key={id}>
-                          <blockquote className="review__quote">
-                            <p className="review__text">{description}</p>
-
-                            <footer className="review__details">
-                              <cite className="review__author">{author}</cite>
-                              <time className="review__date" dateTime={moment(date).format()}>{moment(date).format(`MMMM Do YYYY`)}</time>
-                            </footer>
-                          </blockquote>
-
-                          <div className="review__rating">{rating}</div>
-                        </div>
-
+                     <Review author={author} rating={rating} date={date} id={id} description={description} key={id} />
                       ))}
                     </div>
                     <div className="movie-card__reviews-col">
                       {endReviews.map(({description, author, rating, date, id}) => (
-                        <div className="review" key={id}>
-                          <blockquote className="review__quote">
-                            <p className="review__text">{description}</p>
-
-                            <footer className="review__details">
-                              <cite className="review__author">{author}</cite>
-                              <time className="review__date" dateTime={moment(date).format()}>{moment(date).format(`MMMM Do YYYY`)}</time>
-                            </footer>
-                          </blockquote>
-
-                          <div className="review__rating">{rating}</div>
-                        </div>
+                     <Review author={author} rating={rating} date={date} id={id} description={description} key={id} />
 
                       ))}
                     </div>
