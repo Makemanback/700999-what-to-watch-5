@@ -1,11 +1,11 @@
 import React, {Fragment} from "react";
 import Footer from '../footer/footer';
 import PropTypes from 'prop-types';
-import {Link} from "react-router-dom";
-import moment from 'moment';
+import Tabs from '../tabs/tabs';
 import Review from '../review/review';
+import SimilarFilms from '../similar-films/similar-films';
 
-const FilmReviews = ({image, title, genre, released, reviews}) => {
+const FilmReviews = ({image, title, genre, released, reviews, films}) => {
   const startReviews = reviews.slice(0, Math.round((reviews.length / 2)));
   const endReviews = reviews.slice(Math.round((reviews.length / 2)));
 
@@ -70,19 +70,7 @@ const FilmReviews = ({image, title, genre, released, reviews}) => {
 
             <div className="movie-card__desc">
               <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item">
-                    <Link to="/films/22" className="movie-nav__link">Overview</Link>
-                  </li>
-                  <li className="movie-nav__item">
-                    <Link to="details" className="movie-nav__link">
-                    Details
-                    </Link>
-                  </li>
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
+                <Tabs />
               </nav>
 
               <div className="movie-card__reviews movie-card__row">
@@ -94,12 +82,12 @@ const FilmReviews = ({image, title, genre, released, reviews}) => {
                   <Fragment>
                     <div className="movie-card__reviews-col">
                       {startReviews.map(({description, author, rating, date, id}) => (
-                     <Review author={author} rating={rating} date={date} id={id} description={description} key={id} />
+                        <Review author={author} rating={rating} date={date} id={id} description={description} key={id} />
                       ))}
                     </div>
                     <div className="movie-card__reviews-col">
                       {endReviews.map(({description, author, rating, date, id}) => (
-                     <Review author={author} rating={rating} date={date} id={id} description={description} key={id} />
+                        <Review author={author} rating={rating} date={date} id={id} description={description} key={id} />
 
                       ))}
                     </div>
@@ -114,44 +102,7 @@ const FilmReviews = ({image, title, genre, released, reviews}) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-
-          <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/aviator.jpg" alt="Aviator" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-              </h3>
-            </article>
-          </div>
+          <SimilarFilms genre={genre} films={films} />
         </section>
 
         <Footer />
@@ -166,7 +117,8 @@ FilmReviews.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
+  reviews: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
 export default FilmReviews;

@@ -28,17 +28,17 @@ const App = ({name, genre: movieGenre, year, films}) => {
         </Route>
         <Route exact path='/films/:id' render={() => {
           const film = films[0];
-          return <Film film={film} />;
+          return <Film film={film} films={films} />;
         }}>
         </Route>
         <Route exact path='/films/:id/details' render={() => {
           const film = films[0];
-          return <FilmDetails film={film} />;
+          return <FilmDetails film={film} films={films} />;
         }}>
         </Route>
         <Route exact path='/films/:id/reviews' render={() => {
           const {image, title, genre, released, reviews} = films[0];
-          return <FilmReviews image={image} title={title} genre={genre} released={released} reviews={reviews} />;
+          return <FilmReviews image={image} title={title} genre={genre} released={released} reviews={reviews} films={films} />;
         }}>
 
         </Route>

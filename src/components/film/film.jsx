@@ -1,9 +1,10 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-import Footer from '../footer/footer';
 import PropTypes from 'prop-types';
+import Footer from '../footer/footer';
+import Tabs from '../tabs/tabs';
+import SimilarFilms from '../similar-films/similar-films';
 
-const Film = ({film}) => {
+const Film = ({film, films}) => {
 
   const {image, title, genre, released, rating, description, director, starring} = film;
   const {score, level, count} = rating;
@@ -69,17 +70,7 @@ const Film = ({film}) => {
 
             <div className="movie-card__desc">
               <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <Link to="22/details" className="movie-nav__link">Details</Link>
-                  </li>
-                  <li className="movie-nav__item">
-                    <Link to="22/reviews" className="movie-nav__link">Reviews</Link>
-                  </li>
-                </ul>
+                <Tabs />
               </nav>
 
               <div className="movie-rating">
@@ -104,44 +95,7 @@ const Film = ({film}) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-
-          <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="/img/aviator.jpg" alt="Aviator" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-              </h3>
-            </article>
-          </div>
+          <SimilarFilms genre={genre} films={films} />
         </section>
 
         <Footer />
@@ -165,6 +119,7 @@ Film.propTypes = {
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-  }).isRequired
+  }).isRequired,
+  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 export default Film;

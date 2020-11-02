@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import Video from "../video/video";
 
 class SmallMovieCard extends PureComponent {
   constructor(props) {
@@ -47,7 +48,7 @@ class SmallMovieCard extends PureComponent {
       <article onMouseOver={this._handleHoverCard} onMouseLeave={this._handleHoverOutCard}
         className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image">
-          {this.state.isVideo ? <video autoPlay src='https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4' alt={title} width="280" height="175"></video> : <img src={image} alt={title} width="280" height="175" />}
+          {this.state.isVideo ? <Video title={title} /> : <img src={image} alt={title} width="280" height="175" />}
         </div>
         <h3 className="small-movie-card__title">
           <Link className="small-movie-card__link" to="films/22">{title}</Link>
