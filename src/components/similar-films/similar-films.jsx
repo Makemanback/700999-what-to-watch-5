@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import filmProp from '../film/film.prop';
 
 const SimilarFilms = ({films, genre}) => {
 
@@ -25,7 +26,7 @@ const SimilarFilms = ({films, genre}) => {
 };
 
 SimilarFilms.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  films: PropTypes.arrayOf(filmProp).isRequired,
   genre: PropTypes.string.isRequired
 };
 

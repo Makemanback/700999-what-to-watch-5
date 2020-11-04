@@ -32,8 +32,7 @@ const App = ({name, genre: movieGenre, year, films}) => {
         }}>
         </Route>
         <Route exact path='/films/:id/details' render={() => {
-          const film = films[0];
-          return <FilmDetails film={film} films={films} />;
+          return <FilmDetails film={films[0]} films={films} />;
         }}>
         </Route>
         <Route exact path='/films/:id/reviews' render={() => {

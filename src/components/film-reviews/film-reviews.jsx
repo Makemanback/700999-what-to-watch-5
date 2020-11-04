@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs';
 import Review from '../review/review';
 import SimilarFilms from '../similar-films/similar-films';
+import filmProp from '../film/film.prop';
 
 const FilmReviews = ({image, title, genre, released, reviews, films}) => {
   const startReviews = reviews.slice(0, Math.round((reviews.length / 2)));
@@ -118,7 +119,7 @@ FilmReviews.propTypes = {
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  films: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
+  films: PropTypes.arrayOf(filmProp).isRequired
 };
 
 export default FilmReviews;

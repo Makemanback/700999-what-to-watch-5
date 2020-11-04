@@ -2,9 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
-const Review = (props) => {
-
-  const {id, description, author, rating, date} = props;
+const Review = ({id, description, author, rating, date}) => {
   return (
     <div className="review" key={id}>
       <blockquote className="review__quote">
@@ -27,7 +25,7 @@ Review.propTypes = {
   description: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
-  date: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default Review;

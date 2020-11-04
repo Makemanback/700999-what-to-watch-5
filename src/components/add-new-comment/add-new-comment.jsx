@@ -28,8 +28,7 @@ class AddNewComment extends PureComponent {
   }
 
   render() {
-    const review = this.state.review;
-    const rating = this.state.rating;
+    const {review, rating} = this.state;
 
     return (
       <form action="#" className="add-review__form">
